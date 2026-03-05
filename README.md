@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MODERATO — лендинг кулинарной студии
 
-## Getting Started
+Одностраничный сайт кулинарной студии **MODERATO**: расписание мастер‑классов, премиальный курс, шеф‑повара, инфраструктура студий, отзывы и лид‑магниты (телеграм‑бот и рассылка с рецептами).
 
-First, run the development server:
+Проект собран на **Next.js (App Router)** с анимациями на базе **motion / framer‑motion** и кастомным UI без сторонних дизайн‑систем.
+
+---
+
+## Стек и особенности
+
+- **Next.js 16 / React 19**
+- Типизация на **TypeScript**
+- Стайлинг на базе **Tailwind CSS v4** (`globals.css` + utility‑классы)
+- Анимации: **motion / framer‑motion**
+- Иконки: **lucide-react**
+- Контент вынесен в **`src/data/mockData.json`**:
+  - навигация и контакты;
+  - герой‑блок и премиальный курс;
+  - расписание событий;
+  - шеф‑повара;
+  - телеграм‑афиша;
+  - блок студий и отзывы;
+  - текст лид‑магнита.
+
+---
+
+## Запуск проекта
+
+Установить зависимости:
+
+```bash
+npm install
+```
+
+Запуск dev‑сервера:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Приложение будет доступно по адресу `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Сборка продакшн‑версии:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+Проверка линтером:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Структура проекта
 
-## Deploy on Vercel
+Основные директории:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `src/app`
+  - `layout.tsx` — корневой layout, шрифты и базовая разметка.
+  - `page.tsx` — главная страница, композиция всех секций.
+  - `globals.css` — глобальные стили и тема Tailwind.
+- `src/components/layout`
+  - `Header.tsx` — шапка сайта и навигация.
+  - `Footer.tsx` — подвал с контактами.
+- `src/components/sections`
+  - `Hero.tsx` — герой‑блок с видео/постером.
+  - `Course.tsx` — премиальный курс «Основы кулинарии».
+  - `Schedule.tsx` — расписание мастер‑классов с табами по месяцам.
+  - `TelegramPromo.tsx` — афиша телеграм‑бота.
+  - `Chefs.tsx` — слайдер шеф‑поваров.
+  - `Studios.tsx` — блок «Наши кулинарные студии» + модальное окно с фото.
+  - `Reviews.tsx` — горизонтальный слайдер отзывов.
+  - `LeadManget.tsx` — форма подписки на рассылку с рецептами.
+- `src/components/ui`
+  - `button.tsx` — анимированная кнопка с вариантами `primary / outline / ghost`.
+- `public/images`
+  - изображения шефов, событий, курсов и студий.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Дополнительные исходники фотографий лежат в директории `фото для сайта модерато` (не используются напрямую в билде, служат как исходники для подбора и обрезки изображений).
+
+---
+
+## Как редактировать контент
+
+### Расписание мастер‑классов
+
+Файл: `src/data/mockData.json`, блок `schedule`:
+
+- `months` — список месяцев для табов;
+- `events` — массив мероприятий:
+  - `title` — название;
+  - `dishes` — список блюд;
+  - `spotsTotal` / `spotsLeft` — всего мест и остаток;
+  - `price` — цена (строка, без валюты);
+  - `imageUrl` — путь до картинки в `public/images`.
+
+### Студии
+
+Тот же файл, блок `studios`:
+
+- `highlights` — список ключевых преимуществ студий;
+- `cards` — две карточки студий:
+  - `code`, `name`, `area`, `capacity`, `layout`;
+  - `imageUrl` — фото студии (путь из `public/images`).
+
+При клике на фото или кнопку «Смотреть фото» открывается модальное окно с крупным изображением.
+
+### Отзывы
+
+Блок `reviews` в `mockData.json`:
+
+- `name` — имя клиента (рендерится шрифтом BEBAS в gold);
+- `workshopTitle` — название мастер‑класса;
+- `date` — дата;
+- `rating` — количество звёзд (1–5);
+- `text` — полный текст отзыва.
+
+На странице показывается сокращённая версия, по клику на «Читать полностью» текст разворачивается без перезагрузки страницы.
+
+---
+
+## Деплой
+
+Проект — обычное Next.js‑приложение. Можно деплоить:
+
+- на **Vercel** (рекомендуется) — достаточно подключить репозиторий;
+- на любой Node.js‑хостинг с запуском `npm run build` → `npm start`.
+
+---
+
+## Лицензия и использование
+
+Проект создавался как кастомный лендинг для кулинарной студии **MODERATO**.  
+Дизайн, фотографии и тексты принадлежат их владельцам и не предназначены для свободного коммерческого использования вне этого проекта.
