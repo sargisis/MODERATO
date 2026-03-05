@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #0a0a0a;
+  --color-accent-orange: #e36120;
+
+  --font-sans: var(--font-montserrat), Arial, Helvetica, sans-serif;
+  --font-accent: var(--font-bebas-neue), Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-white font-sans;
+  }
+
+  ::selection {
+    @apply bg-white text-primary;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply uppercase tracking-widest;
+  }
+
+  /* Typography specs */
+  p {
+    @apply leading-relaxed text-gray-200;
+  }
+}
