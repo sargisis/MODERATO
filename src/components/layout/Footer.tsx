@@ -1,12 +1,12 @@
 import React from 'react';
 import mockData from '../../data/mockData.json';
-import { Instagram, Send } from 'lucide-react';
+import { Instagram, Send, MessageCircle } from 'lucide-react';
 
 export const Footer = () => {
     return (
         <footer className="bg-black py-16 border-t border-white/10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12">
                     {/* Logo & Address */}
                     <div className="md:col-span-1">
                         <a href="#" className="font-gothic text-2xl tracking-[0.2em] uppercase text-white block mb-6">
@@ -19,16 +19,19 @@ export const Footer = () => {
                                     {mockData.navigation.contacts.phone}
                                 </a>
                             </p>
-                            <p>
-                                <a href={mockData.navigation.contacts.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">
-                                    Telegram
+                            <div className="flex items-center space-x-4 pt-2">
+                                <a href={mockData.navigation.contacts.telegram} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" title="Telegram">
+                                    <Send size={20} />
                                 </a>
-                            </p>
+                                <a href={(mockData.navigation.contacts as any).whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" title="WhatsApp">
+                                    <MessageCircle size={20} />
+                                </a>
+                            </div>
                         </address>
                     </div>
 
                     {/* Navigation Columns */}
-                    {[mockData.navigation.group1, mockData.navigation.group2, mockData.navigation.group3].map((group, index) => (
+                    {[mockData.navigation.group1, mockData.navigation.group2, mockData.navigation.group3, mockData.navigation.group4].map((group, index) => (
                         <div key={index} className="md:col-span-1">
                             <h4 className="font-bebas text-white/40 text-lg mb-6 tracking-wider">
                                 {group.title}
@@ -51,11 +54,14 @@ export const Footer = () => {
                         © 2009—{new Date().getFullYear()} Moderato Culinary Studio. All rights reserved.
                     </p>
                     <div className="flex space-x-6">
-                        <a href="#" className="text-white/50 hover:text-brand-gold transition-colors">
-                            <Instagram size={20} />
+                        <a href={mockData.navigation.contacts.telegram} target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-brand-gold transition-colors">
+                            <Send size={20} />
+                        </a>
+                        <a href={(mockData.navigation.contacts as any).whatsapp} target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-brand-gold transition-colors">
+                            <MessageCircle size={20} />
                         </a>
                         <a href="#" className="text-white/50 hover:text-brand-gold transition-colors">
-                            <Send size={20} />
+                            <Instagram size={20} />
                         </a>
                     </div>
                 </div>

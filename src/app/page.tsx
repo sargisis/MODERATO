@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
+import { Partners } from '@/components/sections/Partners';
 import { Course } from '@/components/sections/Course';
 import { Schedule } from '@/components/sections/Schedule';
 import { TelegramPromo } from '@/components/sections/TelegramPromo';
@@ -15,6 +16,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <Partners />
         <Course />
         <Schedule />
         <TelegramPromo />

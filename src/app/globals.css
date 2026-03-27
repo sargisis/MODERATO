@@ -2,10 +2,19 @@
 
 @theme inline {
   --color-primary: #0a0a0a;
+  --color-primary-bg: #0a0a0a;
+  --color-brand-gold: #ffffff;
   --color-accent-orange: #e36120;
 
   --font-sans: var(--font-montserrat), Arial, Helvetica, sans-serif;
   --font-accent: var(--font-bebas-neue), Arial, Helvetica, sans-serif;
+
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
 }
 
 @layer base {
@@ -26,5 +35,13 @@
   /* Typography specs */
   p {
     @apply leading-relaxed text-gray-200;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }

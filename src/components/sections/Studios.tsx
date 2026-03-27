@@ -14,12 +14,13 @@ export const Studios = () => {
     <section className="py-24 md:py-32 bg-primary-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 md:mb-16 max-w-3xl">
-          <span className="font-bebas text-brand-gold text-2xl tracking-[0.2em] mb-3 block">
-            Инфраструктура
+          <span className="font-montserrat text-brand-gold text-lg mb-3 block lowercase tracking-wider">
+            инфраструктура
           </span>
           <h2 className="font-montserrat font-bold text-3xl md:text-5xl uppercase text-white mb-6">
             {mockData.studios.title}
           </h2>
+          <div className="w-16 h-[2px] bg-[#800020] mb-6"></div>
           <p className="font-montserrat text-white/70 text-base md:text-lg">
             {mockData.studios.subtitle}
           </p>
@@ -49,7 +50,7 @@ export const Studios = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="group bg-white/5 border border-white/5 hover:border-brand-gold/60 transition-all duration-500 overflow-hidden flex flex-col"
+              className="group bg-white/5 border border-white/5 rounded-2xl hover:border-brand-gold/60 transition-all duration-500 overflow-hidden flex flex-col"
             >
               <div
                 className="relative aspect-[4/3] overflow-hidden cursor-pointer"

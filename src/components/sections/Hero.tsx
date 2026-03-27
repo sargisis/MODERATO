@@ -24,7 +24,7 @@ export const Hero = () => {
                     className="w-full h-full object-cover"
                     poster="/images/hero-poster.jpg"
                 >
-                    <source src={mockData.hero.videoUrl} type="video/mp4" />
+                    <source src={(mockData.hero as any).videoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -36,7 +36,7 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <h1 className="font-montserrat font-extrabold text-4xl md:text-6xl lg:text-7xl uppercase tracking-wider leading-tight mb-6 text-white">
+                    <h1 className="font-montserrat font-extrabold text-5xl md:text-6xl lg:text-7xl uppercase tracking-wider leading-tight mb-6 text-white drop-shadow-lg">
                         {mockData.hero.title}
                     </h1>
                 </motion.div>
@@ -46,7 +46,17 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                    <p className="font-montserrat text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed">
+                    <p className="font-montserrat text-xl md:text-2xl lg:text-3xl text-white/90 max-w-4xl mx-auto mb-6 leading-relaxed font-medium drop-shadow-md">
+                        {mockData.hero.usps}
+                    </p>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                >
+                    <p className="font-montserrat text-xs md:text-sm text-white/70 lowercase tracking-[0.3em] font-semibold mb-12">
                         {mockData.hero.subtitle}
                     </p>
                 </motion.div>

@@ -39,9 +39,12 @@ export const Chefs = () => {
         <section className="py-24 md:py-32 bg-primary-bg relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-end mb-16">
-                    <h2 className="font-montserrat font-bold text-3xl md:text-5xl uppercase text-white">
-                        НАШИ ШЕФЫ
-                    </h2>
+                    <div className="flex flex-col">
+                        <h2 className="font-montserrat font-bold text-3xl md:text-5xl uppercase text-white mb-4">
+                            НАШИ ШЕФЫ
+                        </h2>
+                        <div className="w-16 h-[2px] bg-[#800020]"></div>
+                    </div>
                     <div className="flex space-x-4">
                         <button
                             onClick={prevSlide}
@@ -73,7 +76,7 @@ export const Chefs = () => {
                                 style={{ width: `${100 / itemsPerScreen}%` }}
                             >
                                 <div className="group relative cursor-pointer">
-                                    <div className="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                                    <div className="aspect-[3/4] overflow-hidden rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-700">
                                         <img
                                             src={chef.imageUrl}
                                             alt={chef.name}

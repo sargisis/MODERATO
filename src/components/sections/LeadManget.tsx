@@ -29,18 +29,21 @@ export const LeadMagnet = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="font-montserrat font-bold text-3xl md:text-5xl uppercase mb-6 text-white">
-                        ПОДПИШИТЕСЬ НА РАССЫЛКУ
-                    </h2>
-                    <p className="font-montserrat text-xl text-white/80 mb-12">
-                        {mockData.leadMagnet.text}
-                    </p>
+                    <div className="flex flex-col items-center">
+                        <h2 className="font-montserrat font-bold text-3xl md:text-5xl uppercase text-white mb-6 text-center">
+                            ПОДПИШИТЕСЬ НА РАССЫЛКУ
+                        </h2>
+                        <div className="w-16 h-[2px] bg-[#800020] mb-6"></div>
+                        <p className="font-montserrat text-xl text-white/80 mb-12 text-center">
+                            {mockData.leadMagnet.text}
+                        </p>
+                    </div>
 
                     {formState === 'success' ? (
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="bg-secondary-olive/40 border border-secondary-olive p-8 rounded-sm inline-flex flex-col items-center"
+                            className="bg-secondary-olive/40 border border-secondary-olive p-8 rounded-2xl inline-flex flex-col items-center"
                         >
                             <div className="w-16 h-16 bg-brand-gold rounded-full flex items-center justify-center mb-4">
                                 <Check size={32} className="text-primary-bg" />
@@ -56,7 +59,7 @@ export const LeadMagnet = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="flex-1 bg-white/10 border border-white/20 px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-brand-gold transition-colors font-montserrat"
+                                className="flex-1 bg-white/10 border border-white/20 px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-brand-gold transition-colors font-montserrat rounded-xl"
                             />
                             <Button type="submit" disabled={formState === 'submitting'}>
                                 {formState === 'submitting' ? 'Отправка...' : mockData.leadMagnet.buttonText}

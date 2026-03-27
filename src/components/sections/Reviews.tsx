@@ -49,12 +49,13 @@ export const Reviews = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
-            <span className="font-bebas text-brand-gold text-2xl tracking-[0.2em] mb-3 block">
-              Отзывы
+            <span className="font-montserrat text-brand-gold text-lg mb-3 block lowercase tracking-wider">
+              отзывы
             </span>
-            <h2 className="font-montserrat font-bold text-3xl md:text-5xl uppercase text-white">
+            <h2 className="font-montserrat font-bold text-3xl md:text-5xl uppercase text-white mb-6">
               Что говорят гости
             </h2>
+            <div className="w-16 h-[2px] bg-[#800020]"></div>
           </div>
           <div className="flex space-x-3">
             <button
@@ -86,7 +87,7 @@ export const Reviews = () => {
                 className="flex-shrink-0 px-3 md:px-4"
                 style={{ width: `${100 / itemsPerScreen}%` }}
               >
-                <article className="h-full bg-white/5 border border-white/5 hover:border-brand-gold/60 transition-colors duration-500 p-6 md:p-7 flex flex-col">
+                <article className="h-full bg-white/5 border border-white/5 rounded-2xl hover:border-brand-gold/60 transition-colors duration-500 p-6 md:p-7 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                     <div>
                       <div className="font-bebas text-brand-gold text-xl tracking-[0.2em] uppercase">
