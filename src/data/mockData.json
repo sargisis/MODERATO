@@ -24,15 +24,8 @@
             "items": [
                 "Шефы",
                 "Статьи и Рецепты",
-                "Отзывы"
-            ]
-        },
-        "group4": {
-            "title": "Туризм",
-            "items": [
-                "Гастротуры",
-                "Винные туры",
-                "Корпоративные выезды"
+                "Отзывы",
+                "Туризм"
             ]
         },
         "contacts": {
@@ -61,14 +54,14 @@
                 "title": "ОСНОВЫ КУЛИНАРИИ",
                 "description": "Профессиональные навыки за короткий срок под руководством экспертов. Это не просто курс, это инвестиция в ваше кулинарное мастерство, где вы освоите все тонкости высокой кухни.",
                 "buttonText": "Забронировать место на курсе",
-                "imageUrl": "/images/premium-course.jpg"
+                "imageUrl": "/images/course-1.jpg"
             },
             {
                 "id": 2,
                 "title": "АЗБУКА ВИНА",
                 "description": "Погружение в мир виноделия. Вы научитесь разбираться в сортах винограда, регионах, а также правильно дегустировать и сочетать вино с едой.",
                 "buttonText": "Забронировать место на курсе",
-                "imageUrl": "/images/premium-course.jpg"
+                "imageUrl": "/images/course-2.jpg"
             }
         ]
     },
@@ -100,7 +93,7 @@
                 "spotsTotal": 16,
                 "spotsLeft": 4,
                 "price": "6 500",
-                "imageUrl": "/images/event-1.jpg"
+                "imageUrl": "/images/food-1.jpg"
             },
             {
                 "id": 2,
@@ -116,7 +109,7 @@
                 "spotsTotal": 14,
                 "spotsLeft": 2,
                 "price": "7 500",
-                "imageUrl": "/images/event-1.jpg"
+                "imageUrl": "/images/food-2.jpg"
             },
             {
                 "id": 3,
@@ -132,7 +125,7 @@
                 "spotsTotal": 12,
                 "spotsLeft": 8,
                 "price": "5 500",
-                "imageUrl": "/images/event-3.jpg"
+                "imageUrl": "/images/food-3.jpg"
             },
             {
                 "id": 4,
@@ -148,7 +141,7 @@
                 "spotsTotal": 14,
                 "spotsLeft": 6,
                 "price": "7 000",
-                "imageUrl": "/images/event-1.jpg"
+                "imageUrl": "/images/food-4.jpg"
             },
             {
                 "id": 5,
@@ -164,7 +157,7 @@
                 "spotsTotal": 10,
                 "spotsLeft": 3,
                 "price": "5 000",
-                "imageUrl": "/images/event-3.jpg"
+                "imageUrl": "/images/food-5.jpg"
             }
         ]
     },
@@ -185,7 +178,7 @@
             "id": 3,
             "name": "Елена Сомова",
             "regalia": "Бренд-шеф школы Moderato",
-            "imageUrl": "/images/105.jpg"
+            "imageUrl": "/images/chef-3.jpg"
         }
     ],
     "studios": {
@@ -205,7 +198,7 @@
                 "area": "94 кв.м.",
                 "capacity": "до 45 гостей",
                 "layout": "Open-space формат с большим общим островом",
-                "imageUrl": "/images/studio-216.jpg"
+                "imageUrl": "/images/studio-216-new.jpg"
             },
             {
                 "id": 217,
@@ -214,7 +207,7 @@
                 "area": "70 кв.м.",
                 "capacity": "до 25 гостей",
                 "layout": "Два уровня: 1 этаж — кухня, 2 этаж — банкетная зона",
-                "imageUrl": "/images/studio-217.jpg"
+                "imageUrl": "/images/studio-217-new.jpg"
             }
         ],
         "ctaText": "Арендовать студию"

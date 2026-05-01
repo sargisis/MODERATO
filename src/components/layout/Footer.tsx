@@ -31,7 +31,7 @@ export const Footer = () => {
                     </div>
 
                     {/* Navigation Columns */}
-                    {[mockData.navigation.group1, mockData.navigation.group2, mockData.navigation.group3, mockData.navigation.group4].map((group, index) => (
+                    {[mockData.navigation.group1, mockData.navigation.group2, mockData.navigation.group3].map((group, index) => (
                         <div key={index} className="md:col-span-1">
                             <h4 className="font-bebas text-white/40 text-lg mb-6 tracking-wider">
                                 {group.title}

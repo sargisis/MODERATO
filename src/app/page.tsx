@@ -6,6 +6,8 @@ import { Schedule } from '@/components/sections/Schedule';
 import { TelegramPromo } from '@/components/sections/TelegramPromo';
 import { Chefs } from '@/components/sections/Chefs';
 import { Studios } from '@/components/sections/Studios';
+import { PrivateEvents } from '@/components/sections/PrivateEvents';
+import { SummerCamp } from '@/components/sections/SummerCamp';
 import { Reviews } from '@/components/sections/Reviews';
 import { Footer } from '@/components/layout/Footer';
 import { LeadMagnet } from '@/components/sections/LeadManget';
@@ -19,6 +21,8 @@ export default function App() {
         <Partners />
         <Course />
         <Schedule />
+        <PrivateEvents />
+        <SummerCamp />
         <TelegramPromo />
         <Chefs />
         <Studios />

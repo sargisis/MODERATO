@@ -6,12 +6,9 @@ import mockData from '../../data/mockData.json';
 
 export const Schedule = () => {
     const [activeMonth, setActiveMonth] = useState(mockData.schedule.months[0]);
-    const [activeCategory, setActiveCategory] = useState("Все категории");
 
     const filteredEvents = mockData.schedule.events.filter(
-        (event: any) => 
-            event.month === activeMonth &&
-            (activeCategory === "Все категории" || event.category === activeCategory)
+        (event: any) => event.month === activeMonth
     );
 
     const handleBooking = (eventName: string) => {
@@ -47,26 +44,9 @@ export const Schedule = () => {
                                     {activeMonth === month && (
                                         <motion.div
                                             layoutId="activeTab"
-                                            className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-gold"
+                                            className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#800020]"
                                         />
                                     )}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Category Pills */}
-                        <div className="flex overflow-x-auto gap-3 w-full justify-start md:justify-center scrollbar-hide px-4 pb-2">
-                            {mockData.schedule.categories.map((category: string) => (
-                                <button
-                                    key={category}
-                                    onClick={() => setActiveCategory(category)}
-                                    className={`px-5 py-2 font-montserrat text-xs md:text-sm lg:text-sm transition-all rounded-full border whitespace-nowrap uppercase tracking-widest ${
-                                        activeCategory === category 
-                                        ? 'bg-brand-gold border-brand-gold text-black font-semibold' 
-                                        : 'bg-transparent border-white/20 text-white/70 hover:border-white/50 hover:text-white'
-                                    }`}
-                                >
-                                    {category}
                                 </button>
                             ))}
                         </div>
@@ -76,18 +56,15 @@ export const Schedule = () => {
                 <div className="max-w-5xl mx-auto">
                     {/* Mobile: Swipeable Cards */}
                     <div className="flex md:hidden overflow-x-auto scrollbar-hide -mx-4 px-4 pb-8 min-h-[400px]">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={`mobile-grid-${activeMonth}-${activeCategory}`}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: 20 }}
-                                transition={{ duration: 0.3 }}
-                                className="flex gap-4 snap-x snap-mandatory w-max"
-                            >
+                        <div className="flex gap-4 snap-x snap-mandatory w-max">
+                            <AnimatePresence mode="popLayout">
                                 {filteredEvents.map((event: any) => (
-                                    <div
+                                    <motion.div
                                         key={`mobile-${event.id}`}
+                                        initial={{ opacity: 0, scale: 0.95 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.2 }}
                                         className="group relative bg-[#080808] border border-white/10 hover:border-brand-gold/50 transition-all duration-500 overflow-hidden shrink-0 w-[85vw] max-w-[340px] snap-center rounded-2xl flex flex-col"
                                     >
                                         {/* Image */}
@@ -128,74 +105,73 @@ export const Schedule = () => {
                                                 <Button onClick={() => handleBooking(event.title)} size="sm" className="whitespace-nowrap">Запись</Button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </motion.div>
-                        </AnimatePresence>
+                            </AnimatePresence>
+                        </div>
                         {filteredEvents.length === 0 && (
                             <div className="w-full text-center py-20">
-                                <p className="text-white/50 font-montserrat text-lg">В этом месяце нет мастер-классов по выбранному направлению.</p>
+                                <p className="text-white/50 font-montserrat text-lg">В этом месяце нет мастер-классов.</p>
                             </div>
                         )}
                     </div>
 
-                    {/* Desktop: Compact Horizontal Rows (The Solution to "Canvas Scrolling") */}
+                    {/* Desktop: Compact Horizontal Rows */}
                     <div className="hidden md:block min-h-[400px]">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={`desktop-list-${activeMonth}-${activeCategory}`}
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -15 }}
-                                transition={{ duration: 0.4 }}
-                                className="flex flex-col gap-3 w-full"
-                            >
+                        <div className="flex flex-col gap-3 w-full">
+                            <AnimatePresence mode="popLayout">
                                 {filteredEvents.map((event: any, idx: number) => (
                                     <motion.div
                                         key={`desktop-${event.id}`}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: idx * 0.05, duration: 0.3 }}
-                                        className="flex items-center gap-6 bg-[#080808] border border-white/5 hover:border-brand-gold/40 hover:bg-white/[0.02] p-3 rounded-2xl transition-all duration-300 group"
+                                        initial={{ opacity: 0, x: -10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: 10 }}
+                                        transition={{ duration: 0.2, delay: idx * 0.02 }}
+                                        className="flex items-center gap-6 lg:gap-10 bg-[#0a0a0a] border border-white/5 p-4 md:p-5 rounded-[2rem] transition-all duration-300 group"
                                     >
-                                        {/* Square Thumbnail */}
-                                        <div className="w-32 h-32 lg:w-40 lg:h-36 shrink-0 rounded-xl overflow-hidden relative bg-black">
+                                        {/* Thumbnail */}
+                                        <div className="w-40 h-32 lg:w-48 lg:h-36 shrink-0 rounded-[2.5rem] overflow-hidden relative bg-black">
                                             <img src={event.imageUrl} alt={event.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                                            <div className="absolute top-2 left-2 bg-black/80 px-2 py-0.5 rounded text-brand-gold font-bebas tracking-widest text-sm z-10">
+                                            <div className="absolute top-3 left-4 bg-black/60 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm font-medium z-10">
                                                 {event.date}
                                             </div>
                                         </div>
 
                                         {/* Info */}
                                         <div className="flex-grow flex flex-col justify-center py-2">
-                                            <h4 className="font-montserrat font-bold text-lg lg:text-xl uppercase text-white mb-2 group-hover:text-brand-gold transition-colors">
+                                            <h4 className="font-montserrat font-bold text-lg lg:text-xl uppercase text-white mb-3">
                                                 {event.title}
                                             </h4>
-                                            <div className="flex gap-4 text-sm text-white/50 font-montserrat mb-3">
-                                                <span className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-brand-gold mr-2"></span> {event.time}</span>
+                                            <div className="flex gap-4 text-sm text-white/50 font-montserrat mb-4">
+                                                <span className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-white/40 mr-2"></span> {event.time}</span>
                                                 <span className="flex items-center"><span className="w-1.5 h-1.5 rounded-full bg-accent-orange mr-2"></span> Мест: {event.spotsLeft} из {event.spotsTotal}</span>
                                             </div>
-                                            <p className="text-sm font-montserrat text-white/40 line-clamp-1 italic max-w-xl">
+                                            <p className="text-sm font-montserrat text-white/40 line-clamp-2 max-w-2xl">
                                                 {event.dishes.join(' • ')}
                                             </p>
                                         </div>
 
                                         {/* Call to Action */}
-                                        <div className="flex flex-col items-end justify-center shrink-0 pr-4 pl-6 border-l border-white/10 min-w-[160px]">
-                                            <div className="font-montserrat font-bold text-2xl text-white mb-3 tracking-wide whitespace-nowrap">
-                                                {event.price} <span className="text-lg text-white/50">₽</span>
+                                        <div className="flex flex-col items-center justify-center shrink-0 pr-4 lg:pr-8 min-w-[140px]">
+                                            <div className="font-montserrat font-bold text-2xl text-white mb-4 whitespace-nowrap">
+                                                {event.price} <span className="text-xl">₽</span>
                                             </div>
-                                            <Button onClick={() => handleBooking(event.title)} size="sm" className="w-full rounded-lg px-8 py-4">Запись</Button>
+                                            <Button onClick={() => handleBooking(event.title)} className="w-full rounded-xl bg-white text-black hover:bg-white/90 font-bold tracking-wide">ЗАПИСЬ</Button>
                                         </div>
                                     </motion.div>
                                 ))}
                                 {filteredEvents.length === 0 && (
-                                    <div className="w-full text-center py-20 bg-white/5 rounded-2xl border border-white/10">
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        className="w-full text-center py-20 bg-white/5 rounded-2xl border border-white/10"
+                                    >
                                         <p className="text-white/50 font-montserrat text-lg">В этом месяце нет мастер-классов по выбранному направлению.</p>
-                                    </div>
+                                    </motion.div>
                                 )}
-                            </motion.div>
-                        </AnimatePresence>
+                            </AnimatePresence>
+                        </div>
                     </div>
                 </div>
             </div>

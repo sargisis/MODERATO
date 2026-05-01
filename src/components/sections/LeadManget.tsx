@@ -21,7 +21,7 @@ export const LeadMagnet = () => {
     };
 
     return (
-        <section className="py-24 bg-secondary-olive/20 relative overflow-hidden">
+        <section className="py-24 bg-[#050505] relative overflow-hidden border-t border-white/5">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -34,7 +34,7 @@ export const LeadMagnet = () => {
                             ПОДПИШИТЕСЬ НА РАССЫЛКУ
                         </h2>
                         <div className="w-16 h-[2px] bg-[#800020] mb-6"></div>
-                        <p className="font-montserrat text-xl text-white/80 mb-12 text-center">
+                        <p className="font-montserrat text-lg md:text-xl text-white/60 mb-12 text-center max-w-2xl mx-auto">
                             {mockData.leadMagnet.text}
                         </p>
                     </div>
@@ -59,7 +59,7 @@ export const LeadMagnet = () => {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="flex-1 bg-white/10 border border-white/20 px-6 py-4 text-white placeholder-white/50 focus:outline-none focus:border-brand-gold transition-colors font-montserrat rounded-xl"
+                                className="flex-1 bg-white/[0.03] border border-white/10 px-6 py-4 text-white placeholder-white/30 focus:outline-none focus:border-white transition-all font-montserrat rounded-xl backdrop-blur-sm"
                             />
                             <Button type="submit" disabled={formState === 'submitting'}>
                                 {formState === 'submitting' ? 'Отправка...' : mockData.leadMagnet.buttonText}
@@ -70,8 +70,8 @@ export const LeadMagnet = () => {
             </div>
 
             {/* Background Decor */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-0 opacity-10 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-gold rounded-full blur-[150px]" />
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-0 opacity-20 pointer-events-none">
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#800020] rounded-full blur-[120px] opacity-20" />
             </div>
         </section>
     );

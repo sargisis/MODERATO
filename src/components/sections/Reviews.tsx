@@ -45,7 +45,7 @@ export const Reviews = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-primary-bg relative overflow-hidden">
+    <section id="reviews" className="py-24 md:py-32 bg-primary-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
@@ -87,10 +87,10 @@ export const Reviews = () => {
                 className="flex-shrink-0 px-3 md:px-4"
                 style={{ width: `${100 / itemsPerScreen}%` }}
               >
-                <article className="h-full bg-white/5 border border-white/5 rounded-2xl hover:border-brand-gold/60 transition-colors duration-500 p-6 md:p-7 flex flex-col">
+                <article className="h-full bg-white/[0.02] border border-white/5 rounded-3xl hover:border-white/20 transition-all duration-500 p-6 md:p-8 flex flex-col backdrop-blur-sm group">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <div className="font-bebas text-brand-gold text-xl tracking-[0.2em] uppercase">
+                      <div className="font-montserrat font-bold text-white text-lg tracking-tight uppercase">
                         {review.name}
                       </div>
                       <div className="text-white/50 text-xs font-montserrat mt-1">
@@ -111,11 +111,9 @@ export const Reviews = () => {
                     </div>
                   </div>
 
-                  <button
-                    className="text-left mb-3 font-montserrat text-sm md:text-base text-white hover:text-brand-gold transition-colors"
-                  >
+                  <div className="text-left mb-4 font-montserrat font-bold text-xs md:text-sm text-white/40 uppercase tracking-widest">
                     {review.workshopTitle}
-                  </button>
+                  </div>
 
                   <p className="font-montserrat text-sm md:text-base text-white/80 flex-1">
                     {getPreviewText(review.text, review.id)}

@@ -36,7 +36,7 @@ export const Chefs = () => {
     };
 
     return (
-        <section className="py-24 md:py-32 bg-primary-bg relative overflow-hidden">
+        <section id="chefs" className="py-24 md:py-32 bg-primary-bg relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-end mb-16">
                     <div className="flex flex-col">
@@ -49,14 +49,14 @@ export const Chefs = () => {
                         <button
                             onClick={prevSlide}
                             disabled={currentIndex === 0}
-                            className="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:bg-accent-orange hover:border-accent-orange hover:text-white transition-all rounded-full disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-white disabled:cursor-not-allowed"
+                            className="w-12 h-12 border border-white/10 flex items-center justify-center text-white/50 hover:bg-white hover:text-black transition-all rounded-full disabled:opacity-10 disabled:cursor-not-allowed"
                         >
                             <ChevronLeft size={24} />
                         </button>
                         <button
                             onClick={nextSlide}
                             disabled={currentIndex === maxIndex}
-                            className="w-12 h-12 border border-white/20 flex items-center justify-center text-white hover:bg-accent-orange hover:border-accent-orange hover:text-white transition-all rounded-full disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-white disabled:cursor-not-allowed"
+                            className="w-12 h-12 border border-white/10 flex items-center justify-center text-white/50 hover:bg-white hover:text-black transition-all rounded-full disabled:opacity-10 disabled:cursor-not-allowed"
                         >
                             <ChevronRight size={24} />
                         </button>
@@ -86,11 +86,11 @@ export const Chefs = () => {
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
                                     </div>
 
-                                    <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                        <div className="font-bebas text-accent-orange text-xl mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                                    <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                                        <div className="font-bebas text-white/40 text-lg mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 tracking-widest">
                                             {chef.regalia}
                                         </div>
-                                        <h3 className="font-montserrat font-bold text-2xl uppercase text-white mb-2">
+                                        <h3 className="font-montserrat font-bold text-2xl uppercase text-white mb-2 tracking-tighter">
                                             {chef.name}
                                         </h3>
                                     </div>

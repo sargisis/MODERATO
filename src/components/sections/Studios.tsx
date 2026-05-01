@@ -11,7 +11,7 @@ export const Studios = () => {
   const [activeStudio, setActiveStudio] = useState<StudioCard | null>(null);
 
   return (
-    <section className="py-24 md:py-32 bg-primary-bg relative overflow-hidden">
+    <section id="studios" className="py-24 md:py-32 bg-primary-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 md:mb-16 max-w-3xl">
           <span className="font-montserrat text-brand-gold text-lg mb-3 block lowercase tracking-wider">
@@ -27,16 +27,16 @@ export const Studios = () => {
         </div>
 
         {/* Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 mb-16">
           {mockData.studios.highlights.map((item: string, idx: number) => (
             <div
               key={idx}
-              className="flex items-start gap-4 bg-white/5 border border-white/5 px-5 py-4 md:px-6 md:py-5"
+              className="flex items-start gap-4"
             >
-              <div className="mt-1 w-8 h-8 rounded-full border border-brand-gold/60 flex items-center justify-center flex-shrink-0">
-                <span className="w-1.5 h-1.5 bg-brand-gold rounded-full" />
+              <div className="mt-1 w-6 h-6 rounded-full border border-white/30 flex items-center justify-center flex-shrink-0">
+                <span className="w-1 h-1 bg-white/70 rounded-full" />
               </div>
-              <p className="font-montserrat text-sm md:text-base text-white/80">{item}</p>
+              <p className="font-montserrat text-sm md:text-base text-white/60">{item}</p>
             </div>
           ))}
         </div>
@@ -50,7 +50,7 @@ export const Studios = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="group bg-white/5 border border-white/5 rounded-2xl hover:border-brand-gold/60 transition-all duration-500 overflow-hidden flex flex-col"
+              className="group bg-white/[0.02] border border-white/5 rounded-3xl hover:border-white/20 transition-all duration-500 overflow-hidden flex flex-col backdrop-blur-sm"
             >
               <div
                 className="relative aspect-[4/3] overflow-hidden cursor-pointer"
@@ -62,48 +62,28 @@ export const Studios = () => {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 font-bebas text-lg tracking-[0.18em]">
+                <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md text-white px-4 py-1.5 rounded-full font-bebas text-lg tracking-[0.18em] border border-white/10 z-10">
                   Студия {studio.code}
                 </div>
               </div>
 
               <div className="p-7 md:p-8 flex flex-col gap-4 flex-1">
-                <h3 className="font-montserrat font-bold text-2xl uppercase text-white mb-2">
+                <h3 className="font-montserrat font-bold text-xl md:text-2xl uppercase text-white mb-6 tracking-tight">
                   {studio.name}
                 </h3>
-                <div className="grid grid-cols-2 gap-3 text-sm font-montserrat text-white/70 mb-3">
+                <div className="grid grid-cols-2 gap-3 text-sm font-montserrat text-white/60">
                   <div>
-                    <div className="text-white/40 text-xs uppercase tracking-[0.18em]">
+                    <div className="text-white/40 text-xs uppercase tracking-widest mb-1">
                       Площадь
                     </div>
-                    <div>{studio.area}</div>
+                    <div className="text-white/80">{studio.area}</div>
                   </div>
                   <div>
-                    <div className="text-white/40 text-xs uppercase tracking-[0.18em]">
+                    <div className="text-white/40 text-xs uppercase tracking-widest mb-1">
                       Вместимость
                     </div>
-                    <div>{studio.capacity}</div>
+                    <div className="text-white/80">{studio.capacity}</div>
                   </div>
-                </div>
-                <p className="font-montserrat text-sm md:text-base text-white/80 mb-4">
-                  {studio.layout}
-                </p>
-
-                <div className="mt-auto flex flex-wrap gap-3">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setActiveStudio(studio)}
-                    className="!border-brand-gold !text-brand-gold hover:!bg-brand-gold hover:!text-primary-bg"
-                  >
-                    Смотреть фото
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="!bg-brand-gold !text-black hover:!bg-white hover:!text-black"
-                  >
-                    {mockData.studios.ctaText}
-                  </Button>
                 </div>
               </div>
             </motion.article>

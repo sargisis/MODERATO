@@ -17,6 +17,19 @@ export const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const getLink = (item: string) => {
+        const text = item.toLowerCase();
+        if (text.includes("мастер")) return "#schedule";
+        if (text.includes("курс")) return "#schedule";
+        if (text.includes("лагерь")) return "#schedule";
+        if (text.includes("шеф")) return "#chefs";
+        if (text.includes("отзыв")) return "#reviews";
+        if (text.includes("корпор")) return "#private-events";
+        if (text.includes("события")) return "#private-events";
+        if (text.includes("студи")) return "#studios";
+        return "#";
+    };
+
     return (
         <motion.header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMobileMenuOpen ? 'bg-[#0a0a0a]/95 backdrop-blur-md py-4 shadow-md' : 'bg-transparent py-6'
@@ -36,22 +49,36 @@ export const Header = () => {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden xl:flex space-x-4 lg:space-x-6 items-center flex-shrink-0">
-                        {[mockData.navigation.group1, mockData.navigation.group2, mockData.navigation.group3, mockData.navigation.group4].map((group, index) => (
-                            <div key={index} className="relative group">
-                                <button className="text-sm font-montserrat font-medium text-white/80 hover:text-brand-gold transition-colors uppercase tracking-wide">
-                                    {group.title}
-                                </button>
-                                <div className="absolute top-full left-0 mt-2 w-48 bg-primary-bg/95 border border-white/10 rounded-sm shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 p-4">
-                                    {group.items.map((item: string, idx: number) => (
-                                        <a
-                                            key={idx}
-                                            href="#"
-                                            className="block py-2 text-xs text-white/70 hover:text-brand-gold transition-colors uppercase"
-                                        >
-                                            {item}
-                                        </a>
-                                    ))}
+                    <nav className="hidden xl:flex space-x-6 lg:space-x-8 items-center flex-shrink-0">
+                        {[
+                            { group: mockData.navigation.group1, id: 'schedule' },
+                            { group: mockData.navigation.group2, id: 'private-events' },
+                            { group: mockData.navigation.group3, id: 'footer' }
+                        ].map((nav, index) => (
+                            <div key={index} className="relative group py-2">
+                                <a 
+                                    href={`#${nav.id}`} 
+                                    className="text-[13px] font-montserrat font-bold text-white/80 hover:text-brand-gold transition-colors uppercase tracking-[0.15em] flex items-center gap-1"
+                                >
+                                    {nav.group.title}
+                                    <span className="opacity-40 text-[10px] translate-y-[1px] transition-transform group-hover:rotate-180">▼</span>
+                                </a>
+                                
+                                {/* Dropdown Menu */}
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-[#0f0f0f]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-3 group-hover:translate-y-0 p-5 z-50">
+                                    <div className="flex flex-col space-y-4">
+                                        {nav.group.items.map((item: string, idx: number) => (
+                                            <a
+                                                key={idx}
+                                                href={getLink(item)}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                className="text-[11px] font-montserrat font-bold text-white/50 hover:text-white transition-all uppercase tracking-widest flex items-center group/item"
+                                            >
+                                                <span className="w-0 h-[1px] bg-brand-gold mr-0 transition-all group-hover/item:w-3 group-hover/item:mr-2"></span>
+                                                {item}
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -99,14 +126,18 @@ export const Header = () => {
                         className="xl:hidden bg-[#0a0a0a] border-t border-white/10 overflow-hidden relative overflow-y-auto max-h-[85vh] shadow-[0_10px_30px_rgba(0,0,0,0.8)]"
                     >
                         <div className="px-4 py-10 space-y-10 flex flex-col items-center">
-                            {[mockData.navigation.group1, mockData.navigation.group2, mockData.navigation.group3, mockData.navigation.group4].map((group, index) => (
+                            {[mockData.navigation.group1, mockData.navigation.group2, mockData.navigation.group3].map((group, index) => (
                                 <div key={index} className="w-full flex flex-col items-center text-center space-y-4">
                                     <h3 className="text-brand-gold font-bebas text-2xl tracking-widest">{group.title}</h3>
                                     <div className="w-8 h-[1px] bg-[#800020] mb-2"></div>
                                     <ul className="space-y-4 w-full">
                                         {group.items.map((item: string, idx: number) => (
                                             <li key={idx}>
-                                                <a href="#" className="block py-2 text-white/80 hover:text-brand-gold active:text-brand-gold transition-colors font-montserrat text-base md:text-lg uppercase tracking-wider">
+                                                <a 
+                                                    href={getLink(item)} 
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                    className="block py-2 text-white/80 hover:text-brand-gold active:text-brand-gold transition-colors font-montserrat text-base md:text-lg uppercase tracking-wider"
+                                                >
                                                     {item}
                                                 </a>
                                             </li>

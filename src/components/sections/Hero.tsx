@@ -15,13 +15,14 @@ export const Hero = () => {
         <section className="relative h-screen min-h-[800px] w-full overflow-hidden flex items-center justify-center">
             {/* Background Video */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-black/60 z-10" /> {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 z-10" />
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] z-15 mix-blend-overlay pointer-events-none" />
                 <video
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover scale-105"
                     poster="/images/hero-poster.jpg"
                 >
                     <source src={(mockData.hero as any).videoUrl} type="video/mp4" />
@@ -30,13 +31,13 @@ export const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="relative z-20 w-full max-w-4xl mx-auto px-10 sm:px-12 lg:px-8 text-center flex flex-col items-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                    <h1 className="font-montserrat font-extrabold text-5xl md:text-6xl lg:text-7xl uppercase tracking-wider leading-tight mb-6 text-white drop-shadow-lg">
+                    <h1 className="font-montserrat font-extrabold text-[2.2rem] sm:text-5xl md:text-7xl lg:text-8xl uppercase tracking-tight sm:tracking-tighter leading-[1.1] sm:leading-[0.95] mb-10 text-white drop-shadow-2xl">
                         {mockData.hero.title}
                     </h1>
                 </motion.div>
@@ -46,7 +47,7 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
-                    <p className="font-montserrat text-xl md:text-2xl lg:text-3xl text-white/90 max-w-4xl mx-auto mb-6 leading-relaxed font-medium drop-shadow-md">
+                    <p className="font-montserrat text-sm sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-2xl mx-auto mb-8 leading-relaxed font-medium drop-shadow-md">
                         {mockData.hero.usps}
                     </p>
                 </motion.div>
@@ -56,9 +57,12 @@ export const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
                 >
-                    <p className="font-montserrat text-xs md:text-sm text-white/70 lowercase tracking-[0.3em] font-semibold mb-12">
-                        {mockData.hero.subtitle}
-                    </p>
+                    <div className="flex flex-col items-center gap-4 mb-14">
+                        <div className="w-12 h-[1px] bg-[#800020]"></div>
+                        <p className="font-montserrat text-[10px] sm:text-xs text-brand-gold lowercase tracking-[0.4em] font-bold uppercase opacity-60">
+                            {mockData.hero.subtitle}
+                        </p>
+                    </div>
                 </motion.div>
 
                 <motion.div

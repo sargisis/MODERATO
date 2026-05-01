@@ -26,7 +26,7 @@ export const Course = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: idx * 0.2 }}
-                            className="bg-white/5 border border-white/5 rounded-2xl overflow-hidden hover:border-brand-gold/60 transition-all duration-500 group flex flex-col h-full"
+                            className="bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden hover:border-white/20 transition-all duration-500 group flex flex-col h-full backdrop-blur-sm"
                         >
                             <div className="aspect-[4/3] relative overflow-hidden">
                                 <img
@@ -39,10 +39,10 @@ export const Course = () => {
                             </div>
 
                             <div className="p-8 md:p-10 flex flex-col flex-1">
-                                <h3 className="font-montserrat font-bold text-2xl md:text-3xl uppercase text-white mb-4">
+                                <h3 className="font-montserrat font-bold text-2xl md:text-3xl uppercase text-white mb-6 tracking-tight">
                                     {course.title}
                                 </h3>
-                                <p className="font-montserrat text-white/80 text-base leading-relaxed mb-8 flex-1">
+                                <p className="font-montserrat text-white/50 text-base leading-relaxed mb-10 flex-1 italic">
                                     {course.description}
                                 </p>
                                 <div>
